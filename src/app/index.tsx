@@ -5,11 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ApiProvider } from "../api";
 
+import "bootstrap/dist/css/bootstrap.css"
+
 ReactDOM.render(
   <React.StrictMode>
     <ApiProvider
       url="https://jean-test-api.herokuapp.com/"
-      token="" // set your api token here
+      token="fec0e8c0-0d68-4306-8582-6d667860526d" // set your api token here
     >
       <App />
     </ApiProvider>
