@@ -98,4 +98,4 @@ A set of packages has been included in [package.json](./package.json), please fe
 
 As much as possible, please avoid introducing new dependencies - if you find this necessary, please explain why.
 
-
+If you prefer to use JavaScript without typing, you can execute the command `yarn eject_ts`

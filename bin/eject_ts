@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# _src_=$(cd -P $(dirname "${BASH_SOURCE[0]}") && pwd)
+_root_=$(cd -P $(dirname $(dirname $(dirname "${BASH_SOURCE[0]}"))) && pwd)
+
+echo "Delete old plain js"
+rm -rf $_root_/plain_js
+
+echo "Convert TS to JS"
+cd $_root_ && yarn tsc --jsx preserve -t es2020 --outDir plain_js --noEmit false
+
+echo "Copy assets & CSS"
+cp $_root_/src/app/App.css $_root_/plain_js/app/App.css
+cp $_root_/src/app/index.css $_root_/plain_js/app/index.css
+cp $_root_/src/app/logo.svg $_root_/plain_js/app/logo.svg
+
+echo "Replace TS by JS"
+rm -rf $_root_/src
+mv $_root_/plain_js $_root_/src
+
