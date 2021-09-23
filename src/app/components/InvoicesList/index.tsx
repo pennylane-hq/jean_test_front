@@ -1,7 +1,6 @@
 import { useApi } from "api";
 import { Invoice } from "types";
-import { useEffect, useCallback, useState, useMemo } from "react";
-import { useTable, Column } from "react-table";
+import { useEffect, useCallback, useState } from "react";
 
 const InvoicesList = (): React.ReactElement => {
   const api = useApi();
@@ -17,67 +16,35 @@ const InvoicesList = (): React.ReactElement => {
     fetchInvoices();
   }, [fetchInvoices]);
 
-  const columns: Column<Invoice>[] = useMemo(
-    () => [
-      {
-        Header: "Id",
-        accessor: "id",
-      },
-      {
-        Header: "Total",
-        accessor: "total",
-      },
-      {
-        Header: "Tax",
-        accessor: "tax",
-      },
-      {
-        Header: "Finalized",
-        accessor: "finalized",
-        Cell: (cell) => (cell.row.original.finalized ? "Yes" : "No"),
-      },
-      {
-        Header: "Paid",
-        accessor: "paid",
-        Cell: (cell) => (cell.row.original.paid ? "Yes" : "No"),
-      },
-      {
-        Header: "Date",
-        accessor: "date",
-      },
-      {
-        Header: "Deadline",
-        accessor: "deadline",
-      },
-    ],
-    [],
-  );
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable<Invoice>({ columns, data: invoicesList });
-
   return (
-    <table {...getTableProps()}>
+    <table>
       <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-            ))}
+        <tr>
+          <th>Id</th>
+          <th>Customer</th>
+          <th>Address</th>
+          <th>Total</th>
+          <th>Tax</th>
+          <th>Finalized</th>
+          <th>Paid</th>
+          <th>Date</th>
+          <th>Deadline</th>
+        </tr>
+      </thead>
+      <tbody>
+        {invoicesList.map((invoice) => (
+          <tr key={invoice.id}>
+            <td>{invoice.id}</td>
+            <td>{invoice.customer?.first_name} {invoice.customer?.last_name}</td>
+            <td>{invoice.customer?.address}, {invoice.customer?.zip_code} {invoice.customer?.city}</td>
+            <td>{invoice.total}</td>
+            <td>{invoice.tax}</td>
+            <td>{invoice.finalized ? "Yes" : "No"}</td>
+            <td>{invoice.paid ? "Yes" : "No"}</td>
+            <td>{invoice.date}</td>
+            <td>{invoice.deadline}</td>
           </tr>
         ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => (
-                <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-              ))}
-            </tr>
-          );
-        })}
       </tbody>
     </table>
   );
