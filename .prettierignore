@@ -1,0 +1,6 @@
+*.json
+/build
+src/api/schema.yml
+README.md
+public/index.html
+src/api/gen

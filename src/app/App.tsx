@@ -1,8 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import InvoicesList from './components/InvoicesList'
 import InvoiceShow from './components/InvoiceShow'
@@ -20,7 +16,7 @@ function App() {
         </Switch>
       </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
