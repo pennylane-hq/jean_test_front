@@ -21,7 +21,8 @@ We expect you to identify two advanced features which could be useful for an inv
 ## Deliverable
 
 - source code on a private GitHub repository (please invite @quentindemetz @tdeo @rpechayr @soyoh @alex-min @karineHbt @Juleffel @jfpimentel @lucasbonin)
-- the application deployed using your favorite solution (vercel, netlify, heroku, personal server, etc. )
+- the application deployed using your favorite solution (vercel, netlify, heroku, personal server, etc.)
+- please submit links to the above [via this form](https://forms.gle/siH7Rezuq2V1mUJGA)
 
 You MUST use:
 - bootstrap as UI library
@@ -52,7 +53,7 @@ Point of attention :
 
 ### API client
 
-The repository include an Axios client.
+The repository includes an Axios client.
 
 Before using it, please add the token you received in `/src/app/index.tsx`.
 If you do not have one, please contact us.
