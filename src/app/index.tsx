@@ -1,10 +1,14 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client';
 import App from './App'
 import { ApiProvider } from '../api'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-ReactDOM.render(
+const domRoot = document.getElementById('root');
+const root = createRoot(domRoot!);
+
+root.render(
   <React.StrictMode>
     <ApiProvider
       url="https://jean-test-api.herokuapp.com/"
@@ -12,6 +16,5 @@ ReactDOM.render(
     >
       <App />
     </ApiProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 )
