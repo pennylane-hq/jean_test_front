@@ -62,27 +62,25 @@ If you do not have one, please contact us.
 
 ```tsx
 ReactDOM.render(
-  ...
   <ApiProvider
     url="https://jean-test-api.herokuapp.com/"
     token="" // set your api token here
   >
     <App />
   </ApiProvider>
-  ...
 );
 ```
 
 Use the api client as follow
 
 ```tsx
-import * as React from 'react;
+import { useEffect } from "react";
 import { useApi } from "api";
 
 const FooComponent = () => {
   const api = useApi();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetch = async () => {
       const res = await api.getInvoices();
     }
