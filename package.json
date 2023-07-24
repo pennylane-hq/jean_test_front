@@ -2,46 +2,6 @@
   "name": "jean_test_front",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-regular-svg-icons": "^5.15.1",
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.14",
-    "@redocly/openapi-cli": "^1.0.0-beta.53",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.23",
-    "@types/lodash": "^4.14.170",
-    "@types/node": "^15.14.0",
-    "@types/numeral": "^2.0.1",
-    "@types/react": "^17.0.13",
-    "@types/react-datepicker": "^4.1.1",
-    "@types/react-dom": "^17.0.8",
-    "@types/react-table": "^7.7.1",
-    "axios": "^0.21.1",
-    "bootstrap": "^4.5.3",
-    "classnames": "^2.2.6",
-    "formik": "^2.2.6",
-    "lodash": "^4.17.20",
-    "numeral": "^2.0.6",
-    "openapi-client-axios": "^4.0.0",
-    "openapi-client-axios-typegen": "^3.14.1",
-    "prop-types": "^15.7.2",
-    "query-string": "^6.13.8",
-    "react": "^17.0.1",
-    "react-bootstrap": "^1.4.0",
-    "react-datepicker": "^3.3.0",
-    "react-dom": "^17.0.1",
-    "react-infinite-scroller": "^1.2.4",
-    "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.1",
-    "react-select": "^3.1.1",
-    "react-select-async-paginate": "^0.5.1",
-    "react-table": "^7.6.2",
-    "typescript": "^4.3.5",
-    "web-vitals": "^0.2.4"
-  },
   "scripts": {
     "start": "HOST=localhost react-scripts start",
     "build": "react-scripts build",
@@ -51,11 +11,38 @@
     "openapi:gen": "yarn -s typegen src/api/schema.yml > src/api/gen/client.d.ts && yarn openapi:convert",
     "openapi:convert": "npx @redocly/openapi-cli bundle ./src/api/schema.yml -o ./src/api/gen/schema.json --format json"
   },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "6.4.0",
+    "@fortawesome/free-regular-svg-icons": "6.4.0",
+    "@fortawesome/free-solid-svg-icons": "6.4.0",
+    "@fortawesome/react-fontawesome": "0.2.0",
+    "bootstrap": "5.3.0",
+    "classnames": "2.3.2",
+    "lodash": "4.17.21",
+    "numeral": "2.0.6",
+    "openapi-client-axios": "7.3.1",
+    "prop-types": "15.8.1",
+    "query-string": "8.1.0",
+    "react": "18.2.0",
+    "react-bootstrap": "2.8.0",
+    "react-datepicker": "4.16.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "7.45.2",
+    "react-infinite-scroller": "1.2.6",
+    "react-router-dom": "6.14.2",
+    "react-select": "5.7.4",
+    "react-select-async-paginate": "0.7.3",
+    "react-table": "7.8.0",
+    "web-vitals": "2.1.0"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "resolutions": {
+    "axios": "0.27.2"
   },
   "browserslist": {
     "production": [
@@ -70,7 +57,22 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.3.2",
-    "prettier": "2.4.1"
+    "@redocly/openapi-cli": "1.0.0-beta.95",
+    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "13.5.0",
+    "@types/jest": "^27.0.1",
+    "@types/lodash": "4.14.195",
+    "@types/node": "20.4.2",
+    "@types/numeral": "2.0.2",
+    "@types/react": "18.2.15",
+    "@types/react-datepicker": "4.11.2",
+    "@types/react-dom": "18.2.7",
+    "@types/react-router-dom": "5.3.3",
+    "@types/react-table": "7.7.14",
+    "openapi-client-axios-typegen": "7.3.1",
+    "prettier": "3.0.0",
+    "react-scripts": "5.0.1",
+    "typescript": "4.9.5"
   }
 }

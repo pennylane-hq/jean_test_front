@@ -6,8 +6,8 @@ import CustomerAutocomplete from 'app/components/CustomerAutocomplete'
 import ProductAutocomplete from 'app/components/ProductAutocomplete'
 
 const GettingStarted = () => {
-  const [customer, setCustomer] = useState<Customer>()
-  const [product, setProduct] = useState<Product>()
+  const [customer, setCustomer] = useState<Customer | null>(null)
+  const [product, setProduct] = useState<Product | null>(null)
 
   return (
     <>

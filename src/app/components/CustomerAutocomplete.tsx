@@ -1,12 +1,13 @@
 import { useCallback } from 'react'
-import { AsyncPaginate } from 'react-select-async-paginate'
+import { AsyncPaginate, LoadOptions } from 'react-select-async-paginate'
 
 import { Customer } from 'types'
 import { useApi } from 'api'
+import { GroupBase } from 'react-select'
 
 interface Props {
-  value?: Customer
-  onChange: (Customer: Customer) => void
+  value: Customer | null
+  onChange: (Customer: Customer | null) => void
 }
 
 const defaultAdditional = { page: 1 }
@@ -18,8 +19,9 @@ const getCustomerLabel = (customer: Customer) => {
 const CustomerAutocomplete = ({ value, onChange }: Props) => {
   const api = useApi()
 
-  const loadOptions = useCallback(
-    async (search, loadedOptions, { page }) => {
+  const loadOptions: LoadOptions<Customer, GroupBase<Customer>, {page: number}> = useCallback(
+    async (search, loadedOptions, additional) => {
+      const page = additional?.page ?? 1
       const { data } = await api.getSearchCustomers({
         query: search,
         per_page: 10,

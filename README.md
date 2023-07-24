@@ -2,12 +2,12 @@
 
 This repository contains the guidelines for the frontend interview question, as well as a repository skeleton with which to start.
 
-## Problem statement
+## Your mission
 
 > ***Implement an invoice editor with React***
 
 
-## Objectives
+### Objectives
 
 The goal is to use the provided API to build the prototype of an invoice editor.
 This prototype will contain pages to list, create, edit, delete and finalize invoices.
@@ -18,7 +18,7 @@ We expect you to identify two advanced features which could be useful for an inv
 - a prototype implementation (feel free to work around API limitations)
 - your thoughts for a better / more robust implementation
 
-## Deliverable
+### Deliverable
 
 - source code on a private GitHub repository (please invite @quentindemetz @tdeo @rpechayr @soyoh @alex-min @karineHbt @Juleffel @jfpimentel @lucasbonin)
 - the application deployed using your favorite solution (vercel, netlify, heroku, personal server, etc.)
@@ -31,17 +31,19 @@ You MUST use:
 You must NOT use:
 - a state management library (e.g. Redux)
 
-## Data model
+## What you're working with
+
+### Data model
 
 The prototype will interact with 4 entities:
-- `customers`: the list of customers,
-- `products`: the list of available products,
-- `invoices`: the list of existing invoices,
-  - point of attention, once the `finalized` field is set to `true`, no field may be modified except for `paid`.
-- `invoice_lines`: the lines of an invoice.
+- `customers`: the list of customers
+- `products`: the list of available products
+- `invoices`: the list of existing invoices
+  - point of attention, once the `finalized` field is set to `true`, no field may be modified except for `paid`
+- `invoice_lines`: the lines of an invoice
 
 
-## API
+### API
 
 The API is available at this URL: https://jean-test-api.herokuapp.com/. To use it, you 
 must send the authorization token.
@@ -58,29 +60,27 @@ The repository includes an Axios client.
 Before using it, please add the token you received in `/src/app/index.tsx`.
 If you do not have one, please contact us.
 
-```
+```tsx
 ReactDOM.render(
-  ...
   <ApiProvider
     url="https://jean-test-api.herokuapp.com/"
     token="" // set your api token here
   >
     <App />
   </ApiProvider>
-  ...
 );
 ```
 
 Use the api client as follow
 
-```
-import * as React from 'react;
+```tsx
+import { useEffect } from "react";
 import { useApi } from "api";
 
 const FooComponent = () => {
   const api = useApi();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetch = async () => {
       const res = await api.getInvoices();
     }
@@ -91,7 +91,7 @@ const FooComponent = () => {
   return <div>bar</div>;
 }
 ```
-## Repository contents
+### Repository contents
 
 This repository has been initialized with [create-react-app](https://github.com/facebook/create-react-app). It is to be used as a starting point for developing the prototype.
 

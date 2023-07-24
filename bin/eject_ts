@@ -9,9 +9,7 @@ rm -rf $_root_/plain_js
 echo "Convert TS to JS"
 cd $_root_ && yarn tsc --jsx preserve -t es2020 --outDir plain_js --noEmit false
 
-echo "Copy assets & CSS"
-cp $_root_/src/app/App.css $_root_/plain_js/app/App.css
-cp $_root_/src/app/index.css $_root_/plain_js/app/index.css
+echo "Copy assets"
 cp $_root_/src/app/logo.svg $_root_/plain_js/app/logo.svg
 
 echo "Replace TS by JS"

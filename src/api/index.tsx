@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { ReactNode, createContext, useContext, useRef } from 'react'
 import OpenAPIClientAxios from 'openapi-client-axios'
 import { Client } from './gen/client'
 import definition from './gen/schema.json'
@@ -7,13 +7,14 @@ interface ApiContextState {
   client: Client | undefined
 }
 
-const ApiContext = React.createContext<ApiContextState>({
+const ApiContext = createContext<ApiContextState>({
   client: undefined,
 })
 
 interface ApiProviderProps {
   url: string
   token: string
+  children?: ReactNode
 }
 
 export const ApiProvider: React.FC<ApiProviderProps> = ({
@@ -21,21 +22,19 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({
   token,
   children,
 }) => {
-  const apiRef = React.useRef(
+  const apiRef = useRef(
     new OpenAPIClientAxios({
       /* @ts-ignore */
       definition,
       withServer: { url },
       axiosConfigDefaults: {
         headers: {
-          common: {
-            'X-SESSION': token,
-          },
+          'X-SESSION': token,
         },
       },
     })
   )
-  const clientRef = React.useRef(apiRef.current.initSync<Client>())
+  const clientRef = useRef(apiRef.current.initSync<Client>())
 
   return (
     <ApiContext.Provider value={{ client: clientRef.current }}>
@@ -45,7 +44,7 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({
 }
 
 export const useApi = () => {
-  const { client } = React.useContext(ApiContext)
+  const { client } = useContext(ApiContext)
 
   if (!client) {
     throw new Error('A client API must be defined')
