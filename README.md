@@ -6,6 +6,18 @@ This repository contains the guidelines for the frontend interview question, as 
 
 > ***Implement an invoice editor with React***
 
+### Getting started
+
+```sh
+git clone git@github.com:pennylane-hq/jean_test_front.git
+
+cd jean_test_front
+
+yarn
+
+yarn start
+```
+
 
 ### Objectives
 
