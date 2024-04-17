@@ -6,6 +6,36 @@ This repository contains the guidelines for the frontend interview question, as 
 
 > ***Implement an invoice editor with React***
 
+### Objectives
+
+The goal is to leverage an existing REST HTTP API to build the prototype of an invoicing editor.
+
+This prototype allows users to perform simple actions around their invoices:
+
+- List existing invoices with relevant details
+- Create new invoices
+- Manage existing invoices
+  - Finalize invoices
+  - Delete invoices
+ 
+We do not expect the prototype to be UI-rich as we'll mainly focus on code quality & user experience. We expect you to adopt standard coding practices & setup, including testing, as if you were working on a real application with other coworkers.
+
+Feel free to use pre-installed dependencies or add new ones if you have a legitimate use of them.
+
+However, we want you to:
+
+- Rely on Bootstrap as UI library & [`react-bootstrap`](https://react-bootstrap.github.io/)
+- NOT rely on state management librairies (eg. `redux`)
+
+Please take the time to identify advanced features that could be useful for an invoice editor & write down tech improvements/ideas you could work on.
+
+For each feature/tech improvement, we want to understand:
+
+- What led you to think about this
+- Why it would be useful
+- A potential prototype implementation (feel free to work around API limitations)
+- What might be missing for you to implement it (API limitations, technical constraints)
+
 ### Getting started
 
 ```sh
@@ -18,59 +48,35 @@ yarn
 yarn start
 ```
 
-
-### Objectives
-
-The goal is to use the provided API to build the prototype of an invoice editor.
-This prototype will contain pages to list, create, edit, delete and finalize invoices.
-
-We will pay attention to code quality and user experience. We will NOT pay attention to UI.
-We expect you to identify two advanced features which could be useful for an invoice editor. For each feature, we ask for:
-- an explanation of when this feature could be useful
-- a prototype implementation (feel free to work around API limitations)
-- your thoughts for a better / more robust implementation
-
 ### Deliverable
 
-- source code on a private GitHub repository (please invite @quentindemetz @tdeo @rpechayr @soyoh @alex-min @karineHbt @Juleffel @jfpimentel @lucasbonin)
-- the application deployed using your favorite solution (vercel, netlify, heroku, personal server, etc.)
-- please submit links to the above [via this form](https://forms.gle/siH7Rezuq2V1mUJGA)
-
-You MUST use:
-- bootstrap as UI library
-- [react-bootstrap](https://react-bootstrap.github.io/) for bootstrap's javascript components to avoid using jquery
-
-You must NOT use:
-- a state management library (e.g. Redux)
+- Create a private GitHub repository containing the source code of your application
+- Invite the following GitHub users to it: `@quentindemetz` `@tdeo` `@rpechayr` `@soyoh` `@alex-min` `@karineHbt` `@Juleffel` `@jfpimentel` `@lucasbonin`
+- Deploy the application using any PaaS like Vercel, Netlify, Heroku, personal server, etc.
+- Submit links to the above [via this form](https://forms.gle/siH7Rezuq2V1mUJGA)
 
 ## What you're working with
 
 ### Data model
 
-The prototype will interact with 4 entities:
-- `customers`: the list of customers
-- `products`: the list of available products
-- `invoices`: the list of existing invoices
-  - point of attention, once the `finalized` field is set to `true`, no field may be modified except for `paid`
-- `invoice_lines`: the lines of an invoice
+The REST API contains 4 resources: customers, products, invoices & invoice lines.
 
+Side notes:
 
-### API
+- Invoices contain multiple invoice lines.
+- Invoice lines are accessed via their invoice. To update them, use the relevant invoice API endpoints.
+- Once the `finalized` field is set to `true` for invoices, no field may be modified except for `paid`.
 
-The API is available at this URL: https://jean-test-api.herokuapp.com/. To use it, you 
-must send the authorization token.
+The REST API base URL is `https://jean-test-api.herokuapp.com/`.
+Each API call must be authenticated using a `X-SESSION` header with the provided token.
 
-The openAPI documentation is available [here](https://jean-test-api.herokuapp.com/api-docs/index.html)
+An OpenAPI definition for this REST API is avaible [here](https://jean-test-api.herokuapp.com/api-docs/index.html).
 
-Point of attention :
-- invoice lines are accessed via their invoice. To update them, use the relevant invoice API methods, as described in the Invoice API documentation
+The invoices list endpoint supports a `filter` query param which can be used as described in [our external API documentation](https://pennylane.readme.io/docs/how-to-set-up-filters).
 
 ### API client
 
-The repository includes an Axios client.
-
-Before using it, please add the token you received in `/src/app/index.tsx`.
-If you do not have one, please contact us.
+An API client based on `openapi-client-axios` is available through a React Context set up in `src/app/index.tsx`. The context can be consumed using the `useApi` hook. Before using it, please add the token you received in `/src/app/index.tsx`. If you do not have one, please contact us.
 
 ```tsx
 ReactDOM.render(
@@ -82,8 +88,6 @@ ReactDOM.render(
   </ApiProvider>
 );
 ```
-
-Use the api client as follow
 
 ```tsx
 import { useEffect } from "react";
@@ -103,6 +107,7 @@ const FooComponent = () => {
   return <div>bar</div>;
 }
 ```
+
 ### Repository contents
 
 This repository has been initialized with [create-react-app](https://github.com/facebook/create-react-app). It is to be used as a starting point for developing the prototype.
