@@ -51,7 +51,7 @@ yarn start
 ### Deliverable
 
 - Create a private GitHub repository containing the source code of your application
-- Invite the following GitHub users to it: `@gterral` `@soyoh` `@greeeg` `@thecodehunter`
+- Invite the following GitHub users to it: `@gterral` `@soyoh` `@greeeg` `@thecodehunter` `@bastienvalentin` `@Juleffel` `@andreitertiscu`
 - Deploy the application using any PaaS like Vercel, Netlify, Heroku, personal server, etc.
 - Submit links to the above [via this form](https://forms.gle/siH7Rezuq2V1mUJGA)
 
