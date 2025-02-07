@@ -22,11 +22,6 @@ We do not expect the prototype to be UI-rich as we'll mainly focus on code quali
 
 Feel free to use pre-installed dependencies or add new ones if you have a legitimate use of them.
 
-However, we want you to:
-
-- Rely on Bootstrap as UI library & [`react-bootstrap`](https://react-bootstrap.github.io/)
-- NOT rely on state management librairies (eg. `redux`)
-
 Please take the time to identify advanced features that could be useful for an invoice editor & write down tech improvements/ideas you could work on.
 
 For each feature/tech improvement, we want to understand:
