@@ -90,7 +90,7 @@ An API client based on `openapi-client-axios` is available through a React Conte
 ReactDOM.render(
   <ApiProvider
     url="https://jean-test-api.herokuapp.com/"
-    token="eb8ff9bc-e737-4505-aa57-f01507642073" // set your api token here
+    token="" // set your api token here
   >
     <App />
   </ApiProvider>
