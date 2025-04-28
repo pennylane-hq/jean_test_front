@@ -2,22 +2,23 @@ import { useApi } from 'api'
 import TableHeader from './TableHeader'
 import TableBody from './TableBody'
 import Pagination from './Pagination'
-import { useQuery } from '@tanstack/react-query'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
-
-const ITEMS_PER_PAGE = 10
+import { ITEMS_PER_PAGE } from './constants'
+import TableLoadingBody from './TableLoadingBody'
 
 const InvoicesList = (): React.ReactElement => {
   const api = useApi()
   const [searchParams, setSearchParams] = useSearchParams()
   const currentPage = Number(searchParams.get('page')) ?? 1
 
-  const { data } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ['invoices', currentPage, ITEMS_PER_PAGE],
     queryFn: async () => (await api.getInvoices({ 
       page: currentPage - 1,
       per_page: ITEMS_PER_PAGE 
     })).data,
+    placeholderData: keepPreviousData
   })
 
   const handlePageChange = (page: number) => {
@@ -28,7 +29,12 @@ const InvoicesList = (): React.ReactElement => {
     <div>
       <table className="table table-bordered table-striped">
         <TableHeader />
-        <TableBody invoicesList={data?.invoices ?? []} />
+        {isPending ? (
+          <TableLoadingBody />
+        ) : (
+          <TableBody invoicesList={data?.invoices ?? []} />
+        )}
+        
       </table>
       {data?.pagination && (
         <Pagination
