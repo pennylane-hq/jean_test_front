@@ -19,14 +19,12 @@ This prototype should allow users to perform simple actions around their invoice
  
 We do not expect the prototype to be UI-rich as we'll mainly focus on code quality & user experience. We expect you to adopt standard coding practices & setup, including testing, as if you were working on a real application with other coworkers.
 
-The project comes with several pre-installed libraries to help you get started. We encourage you to leverage these existing dependencies rather than adding new ones, unless you have a legitimate need that cannot be met with the current setup.
+The project includes several pre-installed libraries that should cover most common needs. Among them:
 
-Notable pre-installed libraries include:
-
-- React Hook Form - For handling form state and validation
+- React Hook Form - For handling form state and validation 
 - Yup - For schema validation
 
-If you're not familiar with React Hook Form or Yup, feel free to use alternative form handling approaches you're more comfortable with. For other use cases, if adding any new dependencies, please be prepared to justify why they were necessary for your implementation.
+Note: While we generally recommend using the provided libraries, you may use alternatives to React Hook Form and Yup if you are not familiar with them. For any other additional dependencies, please justify why they are necessary for your implementation.
 
 Please take the time to identify advanced features that could be useful for an invoice editor & write down tech improvements/ideas you could work on.
 
