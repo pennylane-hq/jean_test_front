@@ -84,17 +84,11 @@ The invoices list endpoint supports a `filter` query param which can be used as 
 
 ### API client
 
-An API client based on `openapi-client-axios` is available through a React Context set up in `src/app/index.tsx`. The context can be consumed using the `useApi` hook. Before using it, please add the token you received in `/src/app/index.tsx`. If you do not have one, please contact us.
+An API client based on `openapi-client-axios` is available through a React Context set up in `src/app/index.tsx`. The context can be consumed using the `useApi` hook. Before using it, please add the token you received in `.env.local`. If you do not have one, please contact us.
 
-```tsx
-ReactDOM.render(
-  <ApiProvider
-    url="https://jean-test-api.herokuapp.com/"
-    token="" // set your api token here
-  >
-    <App />
-  </ApiProvider>
-);
+
+```
+REACT_APP_API_TOKEN=YOUR_API_TOKEN
 ```
 
 ```tsx
