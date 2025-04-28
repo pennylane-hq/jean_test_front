@@ -1,27 +1,20 @@
 import { useApi } from 'api'
-import { Invoice } from 'types'
-import { useEffect, useCallback, useState } from 'react'
 import TableHeader from './TableHeader'
 import TableBody from './TableBody'
+import { useQuery } from '@tanstack/react-query'
 
 const InvoicesList = (): React.ReactElement => {
   const api = useApi()
 
-  const [invoicesList, setInvoicesList] = useState<Invoice[]>([])
-
-  const fetchInvoices = useCallback(async () => {
-    const { data } = await api.getInvoices()
-    setInvoicesList(data.invoices)
-  }, [api])
-
-  useEffect(() => {
-    fetchInvoices()
-  }, [fetchInvoices])
-
+  const {data} = useQuery({
+    queryKey: ['invoices'],
+    queryFn: async () => (await api.getInvoices()).data,
+  })
+ 
   return (
     <table className="table table-bordered table-striped">
       <TableHeader />
-      <TableBody invoicesList={[]} />
+      <TableBody invoicesList={data?.invoices ?? []} />
     </table>
   )
 }
