@@ -1,6 +1,5 @@
 # jean_test_front
-
-This repository contains the guidelines for the frontend interview question, as well as a repository skeleton with which to start.
+This repository contains the guidelines for the frontend interview question, as well as a repository skeleton with which to start. It provides a bootstrapped MVP to help you get started quickly.
 
 ## Your mission
 
@@ -8,9 +7,9 @@ This repository contains the guidelines for the frontend interview question, as 
 
 ### Objectives
 
-The goal is to leverage an existing REST HTTP API to build the prototype of an invoicing editor.
+The goal is to leverage an existing REST HTTP API to improve the prototype of an invoicing editor.
 
-This prototype allows users to perform simple actions around their invoices:
+This prototype should allow users to perform simple actions around their invoices:
 
 - List existing invoices with relevant details
 - Create new invoices
@@ -20,7 +19,14 @@ This prototype allows users to perform simple actions around their invoices:
  
 We do not expect the prototype to be UI-rich as we'll mainly focus on code quality & user experience. We expect you to adopt standard coding practices & setup, including testing, as if you were working on a real application with other coworkers.
 
-Feel free to use pre-installed dependencies or add new ones if you have a legitimate use of them.
+The project comes with several pre-installed libraries to help you get started. We encourage you to leverage these existing dependencies rather than adding new ones, unless you have a legitimate need that cannot be met with the current setup.
+
+Notable pre-installed libraries include:
+
+- React Hook Form - For handling form state and validation
+- Yup - For schema validation
+
+If you're not familiar with React Hook Form or Yup, feel free to use alternative form handling approaches you're more comfortable with. For other use cases, if adding any new dependencies, please be prepared to justify why they were necessary for your implementation.
 
 Please take the time to identify advanced features that could be useful for an invoice editor & write down tech improvements/ideas you could work on.
 
@@ -30,6 +36,15 @@ For each feature/tech improvement, we want to understand:
 - Why it would be useful
 - A potential prototype implementation (feel free to work around API limitations)
 - What might be missing for you to implement it (API limitations, technical constraints)
+
+You are welcome and encouraged to use AI tools to assist you in completing this case study. To maintain transparency:
+
+- Please document which AI tools you utilized during the assignment
+- For each AI tool used, briefly describe:
+  - The main tasks or problems where you applied it
+  - How you validated and refined the AI-generated code
+
+Note: While AI can be a valuable assistant, ensure you fully understand the implemented code and can explain your technical decisions.
 
 ### Getting started
 
@@ -77,7 +92,7 @@ An API client based on `openapi-client-axios` is available through a React Conte
 ReactDOM.render(
   <ApiProvider
     url="https://jean-test-api.herokuapp.com/"
-    token="" // set your api token here
+    token="eb8ff9bc-e737-4505-aa57-f01507642073" // set your api token here
   >
     <App />
   </ApiProvider>
