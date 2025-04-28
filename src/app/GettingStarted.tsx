@@ -20,7 +20,7 @@ const GettingStarted = () => {
         <p>It contains notably:</p>
         <ul>
           <li>
-            A page that list all invoices, in{' '}
+            A page that lists all invoices, in{' '}
             <code>app/components/InvoicesList/index.tsx</code>
           </li>
           <li>
