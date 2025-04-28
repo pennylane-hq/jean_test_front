@@ -9,8 +9,6 @@ import NoApiTokenAlert from './NoApiTokenAlert';
 const domRoot = document.getElementById('root');
 const root = createRoot(domRoot!);
 
-console.log(process.env.REACT_APP_API_TOKEN)
-
 root.render(
   <React.StrictMode>
     {process.env.REACT_APP_API_TOKEN ? (
