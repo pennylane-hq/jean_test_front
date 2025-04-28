@@ -1,5 +1,5 @@
 # jean_test_front
-This repository contains the guidelines for the frontend interview question, as well as a repository skeleton with which to start. It provides a bootstrapped MVP to help you get started quickly.
+This repository contains the guidelines for the frontend interview question as well as a bootstrapped MVP to help you begin quickly.
 
 ## Your mission
 
