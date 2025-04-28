@@ -6,7 +6,13 @@ interface PaginationProps {
   onPageChange: (page: number) => void
 }
 
-const getPageNumbers = ({ currentPage, totalPages }: {currentPage: number, totalPages: number}) => {
+const getPageNumbers = ({
+  currentPage,
+  totalPages,
+}: {
+  currentPage: number
+  totalPages: number
+}) => {
   if (totalPages <= 5) {
     return Array.from({ length: totalPages }, (_, i) => i + 1)
   }
@@ -25,18 +31,22 @@ const getPageNumbers = ({ currentPage, totalPages }: {currentPage: number, total
   return Array.from({ length: 5 }, (_, i) => currentPage - 2 + i)
 }
 
-const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps): React.ReactElement => {
+const Pagination = ({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: PaginationProps): React.ReactElement => {
   return (
     <BootstrapPagination className="justify-content-center mt-3">
-      <BootstrapPagination.First 
-        onClick={() => onPageChange(1)} 
+      <BootstrapPagination.First
+        onClick={() => onPageChange(1)}
         disabled={currentPage === 1}
       />
-      <BootstrapPagination.Prev 
-        onClick={() => onPageChange(currentPage - 1)} 
+      <BootstrapPagination.Prev
+        onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       />
-      
+
       {getPageNumbers({ currentPage, totalPages }).map((page) => (
         <BootstrapPagination.Item
           key={page}
@@ -46,17 +56,17 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps):
           {page}
         </BootstrapPagination.Item>
       ))}
-      
-      <BootstrapPagination.Next 
-        onClick={() => onPageChange(currentPage + 1)} 
+
+      <BootstrapPagination.Next
+        onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       />
-      <BootstrapPagination.Last 
-        onClick={() => onPageChange(totalPages)} 
+      <BootstrapPagination.Last
+        onClick={() => onPageChange(totalPages)}
         disabled={currentPage === totalPages}
       />
     </BootstrapPagination>
   )
 }
 
-export default Pagination 
+export default Pagination

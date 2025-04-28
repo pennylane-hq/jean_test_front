@@ -14,17 +14,20 @@ const InvoicesList = (): React.ReactElement => {
 
   const { data, isPending } = useQuery({
     queryKey: ['invoices', currentPage, ITEMS_PER_PAGE],
-    queryFn: async () => (await api.getInvoices({ 
-      page: currentPage - 1,
-      per_page: ITEMS_PER_PAGE 
-    })).data,
-    placeholderData: keepPreviousData
+    queryFn: async () =>
+      (
+        await api.getInvoices({
+          page: currentPage - 1,
+          per_page: ITEMS_PER_PAGE,
+        })
+      ).data,
+    placeholderData: keepPreviousData,
   })
 
   const handlePageChange = (page: number) => {
     setSearchParams({ page: page.toString() })
   }
- 
+
   return (
     <div>
       <table className="table table-bordered table-striped">
@@ -34,7 +37,6 @@ const InvoicesList = (): React.ReactElement => {
         ) : (
           <TableBody invoicesList={data?.invoices ?? []} />
         )}
-        
       </table>
       {data?.pagination && (
         <Pagination

@@ -1,4 +1,4 @@
-import { Invoice } from "types"
+import { Invoice } from 'types'
 
 export interface ColumnDefinition {
   key: string
@@ -11,48 +11,54 @@ export const tableColumns: ColumnDefinition[] = [
   {
     key: 'id',
     header: 'Id',
-    accessor: (invoice) => invoice.id
+    accessor: (invoice) => invoice.id,
   },
   {
     key: 'customer',
     header: 'Customer',
-    accessor: (invoice) => `${invoice.customer?.first_name ?? ''} ${invoice.customer?.last_name ?? ''}`.trim()
+    accessor: (invoice) =>
+      `${invoice.customer?.first_name ?? ''} ${
+        invoice.customer?.last_name ?? ''
+      }`.trim(),
   },
   {
     key: 'address',
     header: 'Address',
-    accessor: (invoice) => `${invoice.customer?.address ?? ''}, ${invoice.customer?.zip_code ?? ''} ${invoice.customer?.city ?? ''}`.trim()
+    accessor: (invoice) =>
+      `${invoice.customer?.address ?? ''}, ${
+        invoice.customer?.zip_code ?? ''
+      } ${invoice.customer?.city ?? ''}`.trim(),
   },
   {
     key: 'total',
     header: 'Total',
-    accessor: (invoice) => invoice.total ?? ''
+    accessor: (invoice) => invoice.total ?? '',
   },
   {
     key: 'tax',
     header: 'Tax',
-    accessor: (invoice) => invoice.tax ?? ''
+    accessor: (invoice) => invoice.tax ?? '',
   },
   {
     key: 'finalized',
     header: 'Finalized',
     accessor: (invoice) => invoice.finalized,
-    formatter: (value) => value ? 'Yes' : 'No'
+    formatter: (value) => (value ? 'Yes' : 'No'),
   },
   {
     key: 'paid',
     header: 'Paid',
     accessor: (invoice) => invoice.paid,
-    formatter: (value) => value ? 'Yes' : 'No'
+    formatter: (value) => (value ? 'Yes' : 'No'),
   },
   {
     key: 'date',
     header: 'Date',
-    accessor: (invoice) => invoice.date ?? ''
+    accessor: (invoice) => invoice.date ?? '',
   },
   {
     key: 'deadline',
     header: 'Deadline',
-    accessor: (invoice) => invoice.deadline ?? ''
-  }
-] 
+    accessor: (invoice) => invoice.deadline ?? '',
+  },
+]
