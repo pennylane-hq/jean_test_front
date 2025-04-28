@@ -1,4 +1,5 @@
 import { Invoice } from "types"
+import { tableColumns } from "./structure"
 
 interface TableBodyProps {
   invoicesList: Invoice[]
@@ -8,20 +9,11 @@ const TableBody = ({ invoicesList }: TableBodyProps) => {
   return <tbody>
     {invoicesList.map((invoice) => (
       <tr key={invoice.id}>
-        <td>{invoice.id}</td>
-        <td>
-          {invoice.customer?.first_name} {invoice.customer?.last_name}
-        </td>
-        <td>
-          {invoice.customer?.address}, {invoice.customer?.zip_code}{' '}
-          {invoice.customer?.city}
-        </td>
-        <td>{invoice.total}</td>
-        <td>{invoice.tax}</td>
-        <td>{invoice.finalized ? 'Yes' : 'No'}</td>
-        <td>{invoice.paid ? 'Yes' : 'No'}</td>
-        <td>{invoice.date}</td>
-        <td>{invoice.deadline}</td>
+        {tableColumns.map((column) => {
+          const value = column.accessor(invoice)
+          const formattedValue = column.formatter ? column.formatter(value) : value
+          return <td key={column.key}>{formattedValue}</td>
+        })}
       </tr>
     ))}
   </tbody>

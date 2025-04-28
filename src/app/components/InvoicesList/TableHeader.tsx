@@ -1,15 +1,11 @@
+import { tableColumns } from "./structure"
+
 const TableHeader = () => {
   return <thead>
     <tr>
-      <th>Id</th>
-      <th>Customer</th>
-      <th>Address</th>
-      <th>Total</th>
-      <th>Tax</th>
-      <th>Finalized</th>
-      <th>Paid</th>
-      <th>Date</th>
-      <th>Deadline</th>
+      {tableColumns.map((column) => (
+        <th key={column.key}>{column.header}</th>
+      ))}
     </tr>
   </thead>
 }
