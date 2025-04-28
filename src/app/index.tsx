@@ -1,13 +1,13 @@
 import React from 'react'
-import { createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client'
 import App from './App'
 import { ApiProvider } from '../api'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import NoApiTokenAlert from './NoApiTokenAlert';
+import NoApiTokenAlert from './NoApiTokenAlert'
 
-const domRoot = document.getElementById('root');
-const root = createRoot(domRoot!);
+const domRoot = document.getElementById('root')
+const root = createRoot(domRoot!)
 
 root.render(
   <React.StrictMode>
